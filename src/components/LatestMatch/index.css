@@ -1,0 +1,13 @@
+/* Write your CSS here */
+.LastMatchMainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #0f172a;
+  color: #ffffff;
+}
+.TeamLogo {
+  width: 100px;
+  height: 100px;
+}
