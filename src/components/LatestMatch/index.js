@@ -21,17 +21,21 @@ const LatestMatch = props => {
         <p>{resultDetails}</p>
       </div>
       <div>
-        <img src={TeamLogo} alt={teamName} className="TeamLogo" />
+        <img
+          src={TeamLogo}
+          alt={`latest match${teamName}`}
+          className="team banner"
+        />
       </div>
       <div>
         <p>{teamName}</p>
-        <p id="firstInnings">FirstInnings</p>
+        <p id="firstInnings">first_innings</p>
         <label htmlFor="firstInnings">{firstInnings}</label>
 
-        <p id="secondInnings">SecondInnings</p>
+        <p id="secondInnings">second_innings</p>
         <label htmlFor="secondInnings">{secondInnigs}</label>
 
-        <p id="manOfTheMatch">Man Of The Match</p>
+        <p id="manOfTheMatch">man_of_the_match</p>
         <label htmlFor="manOfTheMatch">{manOfTheMatch}</label>
 
         <p id="umpires">umpires</p>

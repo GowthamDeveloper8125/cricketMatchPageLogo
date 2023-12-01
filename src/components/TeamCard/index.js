@@ -10,7 +10,7 @@ class TeamCard extends Component {
     const {list} = this.props
     const {teamImageUrl, name, id} = list
     return (
-      <Link to={`/ipl/${id}`}>
+      <Link to={`/team-matches/${id}`}>
         <div>
           <li className="TeamCardListContainer">
             <img src={teamImageUrl} alt={name} className="TeamCardImage" />

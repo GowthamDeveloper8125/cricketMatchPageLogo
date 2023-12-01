@@ -1,12 +1,19 @@
 // Write your code here
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
+
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
 
 import './index.css'
 
 class TeamMatches extends Component {
-  state = {Banner: '', teamName: '', lastMatch: '', recentMatchesDetails: []}
+  state = {
+    Banner: '',
+    lastMatch: '',
+    recentMatchesDetails: [],
+    loader: true,
+  }
 
   componentDidMount() {
     this.getApiDetails()
@@ -24,30 +31,40 @@ class TeamMatches extends Component {
     const team = lastMatchDetails.competing_team
     this.setState({
       Banner: teamImage,
-      teamName: team,
       lastMatch: lastMatchDetails,
       recentMatchesDetails: recentMataches,
+      loader: false,
     })
     console.log(data, team)
   }
 
   render() {
-    const {Banner, teamName, lastMatch, recentMatchesDetails} = this.state
+    const {Banner, lastMatch, recentMatchesDetails, loader} = this.state
     console.log(recentMatchesDetails)
     return (
       <div className="TeamMatchesMainContainer">
         <div>
-          <img src={Banner} alt={teamName} className="TeamMatchesBannerImage" />
+          <img
+            src={Banner}
+            alt="team banner"
+            className="TeamMatchesBannerImage"
+          />
         </div>
         <div>
           <LatestMatch lastMatchDetails={lastMatch} />
         </div>
-        <div className="MatchCardContainer">
-          {recentMatchesDetails.map(eachItem => (
-            <li className="listOne" key={eachItem.id}>
-              <MatchCard listItem={eachItem} />
-            </li>
-          ))}
+        <div>
+          {loader ? (
+            <Loader type="TailSpin" width={50} height={50} color="blue" />
+          ) : (
+            <div className="MatchCardContainer" data-testid="loader">
+              {recentMatchesDetails.map(eachItem => (
+                <li className="listOne" key={eachItem.id}>
+                  <MatchCard listItem={eachItem} />
+                </li>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     )
